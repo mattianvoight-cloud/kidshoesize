@@ -7,13 +7,13 @@
     <style>
         /* Custom User-Submitted Color Palette */
         :root {
-            --palette-bg: #f1ffb4;          /* Cheerful Light Chartreuse/Lime */
-            --palette-dark-green: #497856;  /* Deep Pine Green Card Box Frame */
-            --palette-light-sage: #a3dab6;  /* Soft Mint/Sage Green Input Fields */
-            --palette-sand: #e6d8bc;        /* Creamy Sand Text Accent Backdrop */
+            --palette-bg: #f1ffb4; /* Cheerful Light Chartreuse/Lime */
+            --palette-dark-green: #497856; /* Deep Pine Green Card Box Frame */
+            --palette-light-sage: #a3dab6; /* Soft Mint/Sage Green Input Fields */
+            --palette-sand: #e6d8bc; /* Creamy Sand Text Accent Backdrop */
             --palette-olive-yellow: #d5d671;/* Lime Accent Tone */
-            --palette-red-orange: #d6583c;  /* Pop Red-Orange Shoelace Ribbon & CTA */
-            --palette-charcoal: #010101;    /* Deep Jet Black for Text */
+            --palette-red-orange: #d6583c; /* Pop Red-Orange Shoelace Ribbon & CTA */
+            --palette-charcoal: #010101; /* Deep Jet Black for Text */
             --font-family: 'Fredoka', 'Quicksand', sans-serif;
         }
 
@@ -28,484 +28,645 @@
             align-items: center;
             min-height: 100vh;
             box-sizing: border-box;
+            position: relative;
         }
 
-        /* Import playful premium fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@500;700&display=swap');
-
-        header {
-            text-align: center;
-            margin-bottom: 25px;
-            max-width: 600px;
-        }
-
-        .header-title {
-            font-size: 2.8rem;
-            font-weight: 600;
-            margin: 0 0 8px 0;
-            color: var(--palette-charcoal);
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        /* Combined Code Header Layout Section with custom yellow smiley fills */
+        .brand-header-block {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 15px;
+            width: 100%;
+            max-width: 580px;
+            margin: 15px auto 5px auto;
         }
 
-        .header-smiley {
-            font-size: 2.6rem;
-            display: inline-block;
-        }
-
-        header p {
-            font-size: 1.1rem;
+        .brand-title-text {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--palette-red-orange);
+            text-transform: uppercase;
+            letter-spacing: -1px;
             margin: 0;
-            opacity: 0.85;
-            font-weight: 500;
-            line-height: 1.4;
-        }
-
-        .container {
-            background-color: #ffffff;
-            border: 4px solid var(--palette-dark-green);
-            border-radius: 24px;
-            padding: 30px;
-            width: 100%;
-            max-width: 480px;
-            box-shadow: 8px 8px 0px var(--palette-dark-green);
-            box-sizing: border-box;
-            position: relative;
-        }
-
-        .form-group {
-            margin-bottom: 22px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        /* Custom Toggle Switch for Unit selection */
-        .toggle-container {
-            display: flex;
-            background-color: var(--palette-sand);
-            border: 2px solid var(--palette-charcoal);
-            border-radius: 12px;
-            padding: 4px;
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .toggle-btn {
-            flex: 1;
-            border: none;
-            background: transparent;
-            padding: 10px;
-            font-family: var(--font-family);
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-            z-index: 2;
-            color: var(--palette-charcoal);
-        }
-
-        .toggle-btn.active {
-            background-color: var(--palette-dark-green);
-            color: #ffffff;
-        }
-
-        input[type="number"], select {
-            width: 100%;
-            padding: 14px;
-            font-family: var(--font-family);
-            font-size: 1.1rem;
-            border: 3px solid var(--palette-charcoal);
-            border-radius: 14px;
-            background-color: var(--palette-light-sage);
-            box-sizing: border-box;
-            color: var(--palette-charcoal);
-            font-weight: 500;
-            outline: none;
-            transition: transform 0.1s ease;
-        }
-
-        input[type="number"]:focus, select:focus {
-            transform: scale(1.01);
-            background-color: #ffffff;
-        }
-
-        /* Quick Calculator "No Ruler" helper option */
-        .helper-text {
-            font-size: 0.9rem;
-            margin-top: 6px;
-            font-weight: 500;
-            color: #555;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .helper-link {
-            color: var(--palette-red-orange);
-            text-decoration: underline;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .btn-calc {
-            width: 100%;
-            background-color: var(--palette-red-orange);
-            color: #ffffff;
-            border: 3px solid var(--palette-charcoal);
-            padding: 16px;
-            font-family: var(--font-family);
-            font-size: 1.3rem;
-            font-weight: 600;
-            border-radius: 16px;
-            cursor: pointer;
-            box-shadow: 0px 5px 0px var(--palette-charcoal);
-            transition: all 0.1s ease;
-            margin-top: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .btn-calc:active {
-            transform: translateY(4px);
-            box-shadow: 0px 1px 0px var(--palette-charcoal);
-        }
-
-        /* Result Panel Styling */
-        .result-card {
-            margin-top: 25px;
-            border: 3px dashed var(--palette-dark-green);
-            border-radius: 18px;
-            padding: 20px;
-            background-color: #f9fff6;
-            display: none;
-            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-            text-align: center;
-        }
-
-        @keyframes popIn {
-            0% { transform: scale(0.9); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .result-brand {
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--palette-dark-green);
-            margin-bottom: 5px;
-        }
-
-        .result-size {
-            font-size: 3.5rem;
-            font-weight: 600;
-            color: var(--palette-red-orange);
-            margin: 10px 0;
             line-height: 1;
             text-shadow: 2px 2px 0px var(--palette-charcoal);
         }
 
-        .result-note {
-            font-size: 0.95rem;
-            font-weight: 500;
-            line-height: 1.4;
-            background-color: var(--palette-sand);
-            padding: 10px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            border: 2px solid var(--palette-charcoal);
+        .smiley-graphic {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
         }
 
-        .btn-amazon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background-color: #ff9900;
-            color: var(--palette-charcoal);
-            border: 2px solid var(--palette-charcoal);
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-weight: 700;
-            text-decoration: none;
-            font-size: 1rem;
-            box-shadow: 0 3px 0 var(--palette-charcoal);
-            transition: all 0.1s ease;
+        /* Shoelace Header Graphic Layout Section */
+        .shoelace-header-container {
             width: 100%;
+            max-width: 580px;
+            height: 160px;
+            margin-bottom: 5px;
+            position: relative;
+            overflow: visible;
+        }
+
+        /* Continuous Text Flow Base Typography Styles */
+        .marquee-segment {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            fill: #ffffff;
+            letter-spacing: 0.8px;
+            white-space: nowrap;
+        }
+
+        /* Headline Promo Area styling */
+        .headline-promo {
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            margin: 25px auto 25px auto;
+        }
+
+        .headline-promo h2 {
+            font-size: 23px;
+            color: #2b558f; 
+            margin: 0 0 6px 0;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.2px;
+        }
+
+        .headline-promo p {
+            font-size: 14px;
+            color: var(--palette-dark-green);
+            font-weight: 700;
+            margin: 0;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        /* Main Container Box following deep-green style framing */
+        .web-container {
+            background-color: var(--palette-dark-green);
+            border: 4px solid var(--palette-charcoal);
+            border-radius: 24px;
+            max-width: 520px;
+            width: 100%;
+            padding: 30px 25px;
+            text-align: left;
+            box-shadow: 8px 8px 0px var(--palette-charcoal);
+            position: relative;
+            overflow: hidden;
             box-sizing: border-box;
         }
 
-        .btn-amazon:active {
-            transform: translateY(2px);
-            box-shadow: 0 1px 0 var(--palette-charcoal);
-        }
-
-        /* Fun Confetti Layer overlay */
+        /* Hidden Layer Confetti Overlay Canvas */
         #confetti-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 999;
-        }
-
-        /* Quick Lookup Modal Backdrop styling */
-        .modal {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(1, 1, 1, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
             pointer-events: none;
-            transition: opacity 0.2s ease;
-            padding: 20px;
-            box-sizing: border-box;
+            z-index: 10;
         }
 
-        .modal.open {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .modal-content {
-            background-color: #ffffff;
-            border: 4px solid var(--palette-charcoal);
-            border-radius: 20px;
-            padding: 25px;
-            max-width: 400px;
-            width: 100%;
-            box-shadow: 6px 6px 0 var(--palette-charcoal);
+        /* Layout Form Styling Blocks */
+        .form-group {
+            margin-bottom: 20px;
+            background: var(--palette-sand);
+            padding: 18px;
+            border-radius: 16px;
+            border: 3px solid var(--palette-charcoal);
+            box-shadow: 4px 4px 0px var(--palette-charcoal);
             position: relative;
-            transform: translateY(-20px);
-            transition: transform 0.2s ease;
         }
 
-        .modal.open .modal-content {
-            transform: translateY(0);
+        label {
+            display: block;
+            color: var(--palette-charcoal);
+            font-weight: 700;
+            margin-bottom: 12px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .modal-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-top: 0;
-            margin-bottom: 15px;
+        /* Mode Toggle Button Styling */
+        .mode-toggle-btn {
+            background-color: var(--palette-light-sage);
+            color: var(--palette-charcoal);
+            border: 2px solid var(--palette-charcoal);
+            border-radius: 20px;
+            padding: 5px 12px;
+            font-family: var(--font-family);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: absolute;
+            right: 15px;
+            top: 13px;
+            box-shadow: 2px 2px 0px var(--palette-charcoal);
+        }
+        .mode-toggle-btn:hover {
+            background-color: #ffffff;
+        }
+
+        /* Custom Toggle Switches */
+        .unit-toggle {
+            display: flex;
+            gap: 24px;
+        }
+        
+        .unit-toggle label {
+            text-transform: none;
+            letter-spacing: normal;
+            font-size: 16px;
+            cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            margin-bottom: 0;
         }
 
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
+        .unit-toggle input[type="radio"] {
+            accent-color: var(--palette-red-orange);
+            width: 18px;
+            height: 18px;
+            margin: 0;
+        }
+
+        /* Dropdowns & User Input Controls */
+        input[type="number"], select {
+            width: 100%;
+            padding: 12px 16px;
+            background-color: #ffffff;
+            color: var(--palette-charcoal);
+            font-size: 16px;
+            border: 3px solid var(--palette-charcoal);
+            border-radius: 12px;
+            box-sizing: border-box;
+            outline: none;
             font-family: var(--font-family);
             font-weight: 600;
         }
 
-        .modal-item {
+        .input-row-group {
             display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 2px dashed var(--palette-sand);
+            gap: 12px;
+        }
+
+        /* Action Button */
+        .calc-btn {
+            background-color: #e3de43;
+            color: var(--palette-charcoal);
+            font-size: 20px;
+            font-weight: 700;
+            padding: 18px;
+            border: 3px solid var(--palette-charcoal);
+            border-radius: 50px;
             cursor: pointer;
-            font-weight: 500;
+            width: 100%;
+            margin-top: 10px;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+            box-shadow: 5px 5px 0px var(--palette-charcoal);
+            font-family: var(--font-family);
+            letter-spacing: 0.5px;
+            text-align: center;
+            text-transform: uppercase;
         }
 
-        .modal-item:last-child {
-            border-bottom: none;
+        .calc-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0px var(--palette-charcoal);
         }
 
-        .modal-item:hover {
+        .calc-btn:active {
+            transform: translate(3px, 3px);
+            box-shadow: 2px 2px 0px var(--palette-charcoal);
+        }
+
+        /* Dynamic Shoe Output Reveal Section */
+        #result-box {
+            margin-top: 25px;
+            padding: 24px;
+            border-radius: 16px;
+            background-color: #ffffff;
+            border: 3px solid var(--palette-charcoal);
+            box-shadow: 5px 5px 0px var(--palette-charcoal);
+            display: none;
+            text-align: center;
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .size-header {
+            color: var(--palette-dark-green);
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .size-output {
             color: var(--palette-red-orange);
-            background-color: #fffdf6;
+            font-size: 52px;
+            font-weight: 700;
+            margin: 8px 0;
+            letter-spacing: -0.5px;
         }
 
-        /* -----------------------------------------
-           ONLY NEW CHANGE: Mobile Title Fitting Fix
-           ----------------------------------------- */
-        @media (max-width: 480px) {
-            .header-title { 
-                font-size: 1.8rem !important;  /* Only shrinks the main text box on phone layouts */
-                letter-spacing: 1px !important;  
-            }
-            .header-smiley {
-                font-size: 1.7rem !important;  /* Keeps the smiley scale balanced with the smaller text */
-            }
+        /* Affiliate Link Box Layout Styling */
+        .affiliate-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 12px;
+            background-color: var(--palette-dark-green);
+            color: #ffffff !important;
+            padding: 12px 28px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid var(--palette-charcoal);
+            font-size: 15px;
+            box-shadow: 3px 3px 0px var(--palette-charcoal);
+        }
+
+        /* Styling for the graphic vector shopping cart */
+        .cart-icon-svg {
+            width: 18px;
+            height: 18px;
+            margin-right: 12px; 
+            fill: none;
+            stroke: #ffffff;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            display: inline-block;
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+<div class="brand-header-block">
+    <svg class="smiley-graphic" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="45" fill="#e3de43" stroke="#010101" stroke-width="8"/>
+        <circle cx="35" cy="40" r="6" fill="#010101"/>
+        <circle cx="65" cy="40" r="6" fill="#010101"/>
+        <path d="M 30,60 A 25,25 0 0,0 70,60" fill="none" stroke="#010101" stroke-width="8" stroke-linecap="round"/>
+    </svg>
+    <h1 class="brand-title-text">KidShoeSize.com</h1>
+    <svg class="smiley-graphic" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="45" fill="#e3de43" stroke="#010101" stroke-width="8"/>
+        <circle cx="35" cy="40" r="6" fill="#010101"/>
+        <circle cx="65" cy="40" r="6" fill="#010101"/>
+        <path d="M 30,60 A 25,25 0 0,0 70,60" fill="none" stroke="#010101" stroke-width="8" stroke-linecap="round"/>
+    </svg>
+</div>
+
+<div class="shoelace-header-container">
+    <svg viewBox="0 0 600 160" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="overflow: visible; position: absolute; top:0; left:0;">
+        <defs>
+            <path id="textFlowCurve" d="M -20,95 C 100,-15 160,185 300,85 C 400,15 460,135 530,95 L 620,95" />
+        </defs>
+        <path fill="none" stroke="#d6583c" stroke-width="24" stroke-linecap="round" d="M -20,95 C 100,-15 160,185 300,85 C 400,15 460,135 530,95 L 620,95" />
+        <text class="marquee-segment" dy="4">
+            <textPath href="#textFlowCurve" startOffset="0%">
+                SHOE SIZING IS CHAOTIC ★ WE FIXED IT ★ WELCOME ALL PARENTS &nbsp;&nbsp;&nbsp;&nbsp; SHOE SIZING IS CHAOTIC ★ WE FIXED IT ★ WELCOME ALL PARENTS &nbsp;&nbsp;&nbsp;&nbsp; SHOE SIZING IS CHAOTIC ★ WE FIXED IT ★ WELCOME ALL PARENTS
+                <animate attributeName="startOffset" from="0%" to="-100%" dur="22s" repeatCount="indefinite" />
+            </textPath>
+        </text>
+        <path fill="none" stroke="#d6583c" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" d="M 522,94 C 475,30 420,-10 495,25 C 535,45 528,85 522,94" />
+        <path fill="none" stroke="#d6583c" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" d="M 525,96 C 535,115 515,155 480,150 C 440,145 470,110 525,96" />
+        <path fill="none" stroke="#d6583c" stroke-width="16" stroke-linecap="round" d="M 527,90 C 552,76 585,60 615,67" />
+        <path d="M 615,67 L 625,69" fill="none" stroke="#010101" stroke-width="16" stroke-linecap="round"/>
+        <path fill="none" stroke="#d6583c" stroke-width="16" stroke-linecap="round" d="M 526,99 C 542,126 555,138 585,134" />
+        <path d="M 585,134 L 595,132" fill="none" stroke="#010101" stroke-width="16" stroke-linecap="round"/>
+        <ellipse cx="525" cy="95" rx="20" ry="16" fill="#d6583c" transform="rotate(-15, 525, 95)" />
+        <ellipse cx="525" cy="95" rx="15" ry="11" fill="#bc472d" transform="rotate(-15, 525, 95)" />
+    </svg>
+</div>
+
+<div class="headline-promo">
+    <h2>Tired of endless returns?</h2>
+    <p>Type in your kid's foot stats below for instant sizing accuracy!</p>
+</div>
+
+<div class="web-container">
     <canvas id="confetti-canvas"></canvas>
 
-    <header>
-        <h1 class="header-title">
-            <span class="header-smiley">☺</span>KidShoeSize.com<span class="header-smiley">☺</span>
-        </h1>
-        <p>No headache. No confusing tables. Find your little one's precise fit instantly across major brands so you can shop with confidence.</p>
-    </header>
+    <div class="form-group" id="unit-group-box">
+        <label>1. Choose Unit</label>
+        <div class="unit-toggle">
+            <label><input type="radio" name="unit" value="in" checked onchange="updatePlaceholder()"> Inches (IN)</label>
+            <label><input type="radio" name="unit" value="cm" onchange="updatePlaceholder()"> Centimeters (CM)</label>
+        </div>
+    </div>
 
-    <div class="container">
-        <div class="toggle-container">
-            <button type="button" class="toggle-btn active" id="unit-in" onclick="setUnit('in')">Inches (in)</button>
-            <button type="button" class="toggle-btn" id="unit-cm" onclick="setUnit('cm')">Centimeters (cm)</button>
+    <div class="form-group">
+        <label id="main-input-label">2. Enter Foot Length</label>
+        <button class="mode-toggle-btn" id="mode-toggle" onclick="toggleMeasurementMode()">No Ruler?</button>
+        
+        <div id="ruler-input-container">
+            <input type="number" id="footSize" step="0.01" placeholder="e.g., 6.75">
         </div>
 
-        <div class="form-group">
-            <label for="foot-value">
-                <span>👣</span> Enter Children's Foot Length:
-            </label>
-            <input type="number" id="foot-value" step="0.01" min="0.1" placeholder="e.g., 6.5">
-            <div class="helper-text">
-                No ruler? Try our <span class="helper-link" onclick="openModal()">Quick Age Guess-timator</span>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="brand-select">
-                <span>👟</span> Select Target Brand:
-            </label>
-            <select id="brand-select">
-                <option value="nike">Nike / Jordan</option>
-                <option value="adidas">Adidas</option>
-                <option value="vans">Vans</option>
-                <option value="converse">Converse</option>
-                <option value="newbalance">New Balance</option>
-                <option value="crocs">Crocs (Classic Clogs)</option>
+        <div id="item-input-container" class="input-row-group" style="display: none;">
+            <select id="household-object" style="width: 50%;">
+                <option value="dollar">💵 Dollar Bill</option>
+                <option value="credit">💳 Credit Card</option>
+                <option value="paper">📄 Printer Paper</option>
+            </select>
+            <select id="household-fraction" style="width: 50%;">
+                <option value="0.5">Half of it</option>
+                <option value="0.75">3/4 of it</option>
+                <option value="1.0" selected>Exactly 1 long</option>
+                <option value="1.25">1 and a Quarter</option>
+                <option value="1.5">1 and a Half</option>
+                <option value="1.75">1 and 3/4</option>
+                <option value="2.0">Exactly 2 long</option>
             </select>
         </div>
-
-        <button type="button" class="btn-calc" onclick="calculateSize()">Find Perfect Fit 🎉</button>
-
-        <div class="result-card" id="result-box">
-            <div class="result-brand" id="res-brand">Nike Result</div>
-            <div>Recommended Size:</div>
-            <div class="result-size" id="res-size">--</div>
-            <div class="result-note" id="res-note">Fits true to size. Includes 0.4 inches of dynamic growth buffer room!</div>
-            <a href="#" target="_blank" class="btn-amazon" id="res-link">
-                Shop This Size On Amazon 
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            </a>
-        </div>
     </div>
 
-    <div class="modal" id="age-modal" onclick="closeModalOnBackdrop(event)">
-        <div class="modal-content">
-            <button type="button" class="modal-close" onclick="closeModal()">×</button>
-            <h3 class="modal-title">👶 Average Size by Age</h3>
-            <p style="font-size:0.9rem; margin-top:-10px; margin-bottom:15px; opacity:0.8;">Select an age group to auto-fill an approximate starting measurement:</p>
+    <div class="form-group">
+        <label for="brand">3. Select Brand</label>
+        <select id="brand">
+            <option value="Adidas">Adidas</option>
+            <option value="Converse">Converse</option>
+            <option value="Crocs">Crocs</option>
+            <option value="Native">Native</option>
+            <option value="New Balance">New Balance</option>
+            <option value="Nike">Nike</option>
+            <option value="See Kai Run">See Kai Run</option>
+            <option value="Skechers">Skechers</option>
+            <option value="Stride Rite">Stride Rite</option>
+            <option value="Under Armour">Under Armour</option>
+            <option value="Vans">Vans</option>
+        </select>
+    </div>
+
+    <button class="calc-btn" onclick="calculate90sSize()">PROBLEM SOLVED, CLICK ME!</button>
+
+    <div id="result-box">
+        <div class="size-header" id="brand-result-text"></div>
+        <div class="size-output" id="final-size">10C</div>
+        <div style="color: #010101; font-size: 13px; margin-bottom: 12px; font-weight: 600; opacity: 0.85;">
+            *Includes +0.3cm safety room for accurate fit!
+        </div>
+        
+        <a href="#" id="affiliate-btn" class="affiliate-link" target="_blank">
+            <svg class="cart-icon-svg" viewBox="0 0 24 24">
+                <circle cx="9" cy="21" r="1" fill="#ffffff" stroke="none"/>
+                <circle cx="20" cy="21" r="1" fill="#ffffff" stroke="none"/>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+            <span id="affiliate-text">Shop This Size on Amazon</span>
+        </a>
+    </div>
+</div>
+
+<script>
+    // System Sizing Database Configuration Map
+    const sizeData = {
+        "Adidas": [
+            { max: 8.1, sz: "1K" }, { max: 9.0, sz: "2K" }, { max: 9.8, sz: "3K" }, { max: 10.6, sz: "4K" },
+            { max: 11.5, sz: "5K" }, { max: 12.3, sz: "6K" }, { max: 13.2, sz: "7K" }, { max: 14.0, sz: "8K" },
+            { max: 14.9, sz: "9K" }, { max: 15.7, sz: "10K" }, { max: 16.6, sz: "11K" }, { max: 17.4, sz: "12K" },
+            { max: 18.3, sz: "13K" }, { max: 19.1, sz: "1" }, { max: 20.0, sz: "2" }, { max: 20.8, sz: "3" },
+            { max: 21.6, sz: "4" }, { max: 22.5, sz: "5" }, { max: 23.3, sz: "5.5" }, { max: 24.2, sz: "6" },
+            { max: 25.0, sz: "6.5" }, { max: 25.9, sz: "7" }
+        ],
+        "Converse": [
+            { max: 10.5, sz: "2" }, { max: 11.5, sz: "3" }, { max: 12.3, sz: "4" }, { max: 13.0, sz: "5" },
+            { max: 14.0, sz: "6" }, { max: 14.8, sz: "7" }, { max: 15.6, sz: "8" }, { max: 16.4, sz: "9" },
+            { max: 17.2, sz: "10" }, { max: 18.1, sz: "11" }, { max: 19.0, sz: "12" }, { max: 19.8, sz: "13" },
+            { max: 20.6, sz: "1" }, { max: 21.4, sz: "2" }, { max: 22.2, sz: "3" }, { max: 23.0, sz: "4" },
+            { max: 23.8, sz: "5" }, { max: 24.6, sz: "6" }
+        ],
+        "Crocs": [
+            { max: 9.8, sz: "C2" }, { max: 10.7, sz: "C3" }, { max: 11.5, sz: "C4" }, { max: 12.3, sz: "C5" },
+            { max: 13.2, sz: "C6" }, { max: 14.0, sz: "C7" }, { max: 14.9, sz: "C8" }, { max: 15.7, sz: "C9" },
+            { max: 16.6, sz: "C10" }, { max: 17.4, sz: "C11" }, { max: 18.3, sz: "C12" }, { max: 19.1, sz: "C13" },
+            { max: 20.0, sz: "J1" }, { max: 20.8, sz: "J2" }, { max: 21.7, sz: "J3" }, { max: 22.5, sz: "J4" },
+            { max: 23.3, sz: "J5" }, { max: 24.2, sz: "J6" }
+        ],
+        "Native": [
+            { max: 9.8, sz: "C4" }, { max: 10.6, sz: "C5" }, { max: 11.5, sz: "C6" }, { max: 12.3, sz: "C7" },
+            { max: 13.1, sz: "C8" }, { max: 14.0, sz: "C9" }, { max: 14.8, sz: "C10" }, { max: 15.6, sz: "C11" },
+            { max: 16.5, sz: "C12" }, { max: 17.3, sz: "C13" }, { max: 18.1, sz: "J1" }, { max: 19.0, sz: "J2" },
+            { max: 19.8, sz: "J3" }, { max: 20.6, sz: "J4" }, { max: 21.5, sz: "J5" }, { max: 22.3, sz: "J6" }
+        ],
+        "New Balance": [
+            { max: 9.5, sz: "2" }, { max: 10.2, sz: "3" }, { max: 11.1, sz: "4" }, { max: 11.9, sz: "5" },
+            { max: 12.8, sz: "6" }, { max: 13.7, sz: "7" }, { max: 14.4, sz: "8" }, { max: 15.3, sz: "9" },
+            { max: 16.1, sz: "10" }, { max: 17.0, sz: "11" }, { max: 17.9, sz: "12" }, { max: 18.7, sz: "13" },
+            { max: 19.6, sz: "1" }, { max: 20.4, sz: "2" }, { max: 21.3, sz: "3" }, { max: 22.1, sz: "4" },
+            { max: 23.0, sz: "5" }, { max: 23.8, sz: "6" }, { max: 24.7, sz: "7" }
+        ],
+        "Nike": [
+            { max: 8.3, sz: "0C" }, { max: 9.1, sz: "1C" }, { max: 10.0, sz: "2C" }, { max: 10.8, sz: "2.5C" },
+            { max: 11.6, sz: "3C" }, { max: 12.5, sz: "4C" }, { max: 13.3, sz: "5C" }, { max: 14.2, sz: "6C" },
+            { max: 15.0, sz: "7C" }, { max: 15.9, sz: "8C" }, { max: 16.7, sz: "9C" }, { max: 17.2, sz: "10C" },
+            { max: 17.6, sz: "10.5C" }, { max: 18.0, sz: "11C" }, { max: 18.4, sz: "11.5C" }, { max: 18.8, sz: "12C" },
+            { max: 19.3, sz: "12.5C" }, { max: 19.7, sz: "13C" }, { max: 20.1, sz: "13.5C" }, { max: 20.4, sz: "1Y" },
+            { max: 20.8, sz: "1.5Y" }, { max: 21.2, sz: "2Y" }, { max: 21.6, sz: "2.5Y" }, { max: 23.1, sz: "3Y" },
+            { max: 23.5, sz: "3.5Y" }, { max: 23.8, sz: "4Y" }, { max: 24.2, sz: "4.5Y" }, { max: 24.6, sz: "5Y" },
+            { max: 25.0, sz: "5.5Y" }, { max: 25.4, sz: "6Y" }, { max: 25.8, sz: "6.5Y" }, { max: 26.2, sz: "7Y" }
+        ],
+        "See Kai Run": [
+            { max: 10.5, sz: "3" }, { max: 11.3, sz: "4" }, { max: 12.1, sz: "5" }, { max: 13.0, sz: "6" },
+            { max: 13.8, sz: "7" }, { max: 14.6, sz: "8" }, { max: 15.4, sz: "9" }, { max: 16.2, sz: "10" },
+            { max: 17.0, sz: "11" }, { max: 17.8, sz: "12" }, { max: 18.6, sz: "13" }, { max: 19.5, sz: "1Y" },
+            { max: 20.3, sz: "2Y" }, { max: 21.2, sz: "3Y" }
+        ],
+        "Skechers": [
+            { max: 10.0, sz: "3" }, { max: 11.0, sz: "4" }, { max: 12.0, sz: "5" }, { max: 12.5, sz: "6" },
+            { max: 13.5, sz: "7" }, { max: 14.5, sz: "8" }, { max: 15.0, sz: "9" }, { max: 16.0, sz: "10" },
+            { max: 17.0, sz: "11" }, { max: 17.5, sz: "12" }, { max: 18.5, sz: "13" }, { max: 19.5, sz: "1" },
+            { max: 20.5, sz: "2" }, { max: 21.5, sz: "3" }, { max: 22.0, sz: "4" }, { max: 23.0, sz: "5" },
+            { max: 24.0, sz: "6" }
+        ],
+        "Stride Rite": [
+            { max: 9.2, sz: "2" }, { max: 10.0, sz: "3" }, { max: 10.8, sz: "4" }, { max: 11.7, sz: "5" },
+            { max: 12.5, sz: "6" }, { max: 13.4, sz: "7" }, { max: 14.2, sz: "8" }, { max: 15.1, sz: "9" },
+            { max: 15.9, sz: "10" }, { max: 16.8, sz: "11" }, { max: 17.6, sz: "12" }, { max: 18.4, sz: "13" },
+            { max: 19.3, sz: "1" }, { max: 20.1, sz: "2" }, { max: 21.0, sz: "3" }, { max: 21.8, sz: "4" },
+            { max: 22.6, sz: "5" }, { max: 23.5, sz: "6" }
+        ],
+        "Under Armour": [
+            { max: 10.8, sz: "4K" }, { max: 11.4, sz: "5K" }, { max: 12.1, sz: "6K" }, { max: 12.7, sz: "7K" },
+            { max: 13.3, sz: "8K" }, { max: 14.0, sz: "9K" }, { max: 14.6, sz: "10K" }, { max: 15.2, sz: "11K" },
+            { max: 15.9, sz: "12K" }, { max: 16.5, sz: "13K" }, { max: 17.1, sz: "1" }, { max: 18.1, sz: "1.5" },
+            { max: 19.1, sz: "2" }, { max: 20.0, sz: "2.5" }, { max: 21.0, sz: "3" }, { max: 22.0, sz: "3.5" },
+            { max: 23.0, sz: "4" }, { max: 24.0, sz: "5" }, { max: 25.0, sz: "6" }
+        ],
+        "Vans": [
+            { max: 9.6, sz: "2" }, { max: 10.4, sz: "3" }, { max: 11.2, sz: "4" }, { max: 12.0, sz: "5" },
+            { max: 12.8, sz: "6" }, { max: 13.6, sz: "7" }, { max: 14.4, sz: "8" }, { max: 15.2, sz: "9" },
+            { max: 16.0, sz: "10" }, { max: 16.8, sz: "11" }, { max: 17.6, sz: "12" }, { max: 18.4, sz: "13" },
+            { max: 19.2, sz: "1" }, { max: 20.0, sz: "2" }, { max: 20.8, sz: "3" }, { max: 21.6, sz: "4" },
+            { max: 22.4, sz: "5" }, { max: 23.2, sz: "6" }
+        ]
+    };
+    // Tracking state variable for input modes
+    let isHouseholdMode = false;
+    function toggleMeasurementMode() {
+        isHouseholdMode = !isHouseholdMode;
+        
+        const rulerContainer = document.getElementById('ruler-input-container');
+        const itemContainer = document.getElementById('item-input-container');
+        const unitGroup = document.getElementById('unit-group-box');
+        const toggleBtn = document.getElementById('mode-toggle');
+        const labelText = document.getElementById('main-input-label');
+        if (isHouseholdMode) {
+            rulerContainer.style.display = "none";
+            itemContainer.style.display = "flex";
+            unitGroup.style.opacity = "0.3"; 
+            unitGroup.style.pointerEvents = "none";
+            toggleBtn.innerText = "Use Ruler";
+            labelText.innerText = "2. Select Foot Fit Scale";
+        } else {
+            rulerContainer.style.display = "block";
+            itemContainer.style.display = "none";
+            unitGroup.style.opacity = "1";
+            unitGroup.style.pointerEvents = "auto";
+            toggleBtn.innerText = "No Ruler?";
+            labelText.innerText = "2. Enter Foot Length";
+        }
+    }
+
+    function updatePlaceholder() {
+        const unit = document.querySelector('input[name="unit"]:checked').value;
+        document.getElementById('footSize').placeholder = unit === 'in' ? 'e.g., 6.75' : 'e.g., 17.1';
+    }
+
+    function calculate90sSize() {
+        const brand = document.getElementById('brand').value;
+        const resultBox = document.getElementById('result-box');
+        let cmLength = 0;
+
+        if (!isHouseholdMode) {
+            // Path A: Calculating raw value via manual numeric type inputs
+            const unit = document.querySelector('input[name="unit"]:checked').value;
+            const rawInput = parseFloat(document.getElementById('footSize').value);
+
+            if (isNaN(rawInput) || rawInput <= 0) {
+                alert("Please enter a valid number for foot length!");
+                return;
+            }
+            cmLength = unit === 'in' ? rawInput * 2.54 : rawInput;
+        } else {
+            // Path B: Option B background mathematical translation logic
+            const objectType = document.getElementById('household-object').value;
+            const fractionMultiplier = parseFloat(document.getElementById('household-fraction').value);
             
-            <div class="modal-item" onclick="selectAge(4.25)">
-                <span>9 - 12 Months</span><strong>4.25 in (10.8 cm)</strong>
-            </div>
-            <div class="modal-item" onclick="selectAge(4.75)">
-                <span>12 - 18 Months</span><strong>4.75 in (12.1 cm)</strong>
-            </div>
-            <div class="modal-item" onclick="selectAge(5.25)">
-                <span>2 Years Old (Toddler)</span><strong>5.25 in (13.3 cm)</strong>
-            </div>
-            <div class="modal-item" onclick="selectAge(5.75)">
-                <span>3 Years Old (Toddler)</span><strong>5.75 in (14.6 cm)</strong>
-            </div>
-            <div class="modal-item" onclick="selectAge(6.25)">
-                <span>4 Years Old (Preschool)</span><strong>6.25 in (15.9 cm)</strong>
-            </div>
-            <div class="modal-item" onclick="selectAge(6.75)">
-                <span>5 Years Old (Preschool)</span><strong>6.75 in (17.1 cm)</strong>
-            </div>
-            <div class="modal-item" onclick="selectAge(7.25)">
-                <span>6 Years Old (School Kid)</span><strong>7.25 in (18.4 cm)</strong>
-            </div>
-        </div>
-    </div>
+            let objectInchesBase = 0;
+            if (objectType === 'dollar') objectInchesBase = 6.14; // Standard US Currency length tracking
+            if (objectType === 'credit') objectInchesBase = 3.37; // Standard ISO ID Card specification
+            if (objectType === 'paper') objectInchesBase = 11.0; // Standard US Letter width dimension
+            
+            let totalCalculatedInches = objectInchesBase * fractionMultiplier;
+            cmLength = totalCalculatedInches * 2.54; // Map back safely into metric processing standard
+        }
 
-    <script>
-        // Active Unit state variable tracking
-        let currentUnit = 'in';
+        let bufferedCm = cmLength + 0.3;
+        const chart = sizeData[brand];
+        let finalSize = "N/A";
 
-        // Normalized Brand Size Chart Mapping Arrays
-        const brandDatabases = {
-            nike: [
-                { maxIn: 3.8, size: "2C", note: "Infant sizing. Nike runs quite true to size. Growth allowance included." },
-                { maxIn: 4.1, size: "3C", note: "Infant sizing. Generous wiggle room built into calculation." },
-                { maxIn: 4.5, size: "4C", note: "Infant sizing. Fits standard Nike toddler running/lifestyle profiles." },
-                { maxIn: 4.8, size: "5C", note: "Toddler sizing. Includes standardized growth margin space." },
-                { maxIn: 5.1, size: "6C", note: "Toddler sizing. Perfect fit for active tiny feet profiles." },
-                { maxIn: 5.5, size: "7C", note: "Toddler sizing. True to shape configuration guidelines." },
-                { maxIn: 5.8, size: "8C", note: "Toddler sizing. Standard bracket calculation checks out." },
-                { maxIn: 6.1, size: "9C", note: "Toddler sizing. Great transition step for growing feet." },
-                { maxIn: 6.5, size: "10C", note: "Toddler sizing step. Secure structure built into calculation." },
-                { maxIn: 6.8, size: "11C", note: "Preschool mapping bracket. Recommended standard fit target." },
-                { maxIn: 7.1, size: "12C", note: "Preschool size step. Great layout cushion room balance." },
-                { maxIn: 7.5, size: "13C", note: "Preschool size step. Final 'C' child tier division." },
-                { maxIn: 7.8, size: "1Y", note: "Youth Sizing starts here! Fits older child profile parameters." },
-                { maxIn: 8.1, size: "2Y", note: "Youth grade sizing. Ideal tracking balance for linear growth." },
-                { maxIn: 8.5, size: "3Y", note: "Youth Grade tracking target. Confident selection tier size." }
-            ],
-            adidas: [
-                { maxIn: 3.7, size: "2K", note: "Adidas toddler shoes can sometimes run slightly wide. Cozy fit." },
-                { maxIn: 4.0, size: "3K", note: "Standard Adidas infant mapping. Roomy toe-box structure." },
-                { maxIn: 4.4, size: "4K", note: "Toddler fit baseline option. Great for Superstar & Stan Smith models." },
-                { maxIn: 4.7, size: "5K", note: "Toddler tracking tier. Excellent midfoot containment spacing." },
-                { maxIn: 5.1, size: "6K", note: "Toddler tracking step. True to signature German performance charts." },
-                { maxIn: 5.4, size: "7K", note: "Toddler size level. Secure cushion structure considerations applied." },
-                { maxIn: 5.7, size: "8K", note: "Standard Toddler option. Great for running style silhouettes." },
-                { maxIn: 6.0, size: "9K", note: "Toddler transition step. Perfect alignment for daily playground play." },
-                { maxIn: 6.3, size: "10K", note: "Toddler boundary milestone size. Checks out well with growth metrics." },
-                { maxIn: 6.6, size: "11K", note: "Preschool tier active mapping. Generous toe movement clearance." },
-                { maxIn: 7.0, size: "12K", note: "Preschool standard size step. Ensures long wearability windows." },
-                { maxIn: 7.3, size: "13K", note: "Preschool final K step tier. Strong structural hold characteristics." },
-                { maxIn: 7.7, size: "1H", note: "Youth/Junior tier mapping active. Fits bigger kids comfortably." },
-                { maxIn: 8.0, size: "2H", note: "Youth/Junior performance specification standard size." },
-                { maxIn: 8.4, size: "3H", note: "Youth tier target benchmark selection parameter option." }
-            ],
-            vans: [
-                { maxIn: 3.75, size: "2.0 Toddler", note: "Vans flat vulcanized soles run true but stiff. Standard growth padding applied." },
-                { maxIn: 4.10, size: "3.0 Toddler", note: "Classic canvas fitment tracking. High styling structure balance." },
-                { maxIn: 4.50, size: "4.0 Toddler", note: "Toddler slip-on scale calibration metrics verified." },
-                { maxIn: 4.80, size: "5.0 Toddler", note: "Toddler size step. Great for high-top Sk8-Hi models." },
-                { maxIn: 5.15, size: "6.0 Toddler", note: "Toddler sizing matrix profile check option. Clean tracking bounds." },
-                { maxIn: 5.50, size: "7.0 Toddler", note: "Toddler scale fit. Accommodates standard matching socks well." },
-                { maxIn: 5.85, size: "8.0 Toddler", note: "Toddler performance baseline index mapping check standard." },
-                { maxIn: 6.20, size: "9.0 Toddler", note: "Toddler old-skool silhouette sizing calculations active." },
-                { maxIn: 6.50, size: "10.0 Toddler", note: "Final classic Toddler bracket size step option." },
-                { maxIn: 6.85, size: "11.0 Kids", note: "Kids structural shift sizing parameters initialized." },
-                { maxIn: 7.20, size: "12.0 Kids", note: "Kids step level calculation metric verification complete." },
-                { maxIn: 7.55, size: "13.0 Kids", note: "Kids final standard alignment scale tracking profile step." },
-                { maxIn: 7.90, size: "1.0 Youth", note: "Youth tier expansion scale values mapped cleanly." },
-                { maxIn: 8.25, size: "2.0 Youth", note: "Youth tracking framework calculation check standard confirmation." },
-                { maxIn: 8.60, size: "3.0 Youth", note: "Youth upper range threshold criteria index metrics complete." }
-            ],
-            converse: [
-                { maxIn: 3.65, size: "2C", note: "Converse Chuck Taylors notoriously run a half-size LARGE. We factored this in!" },
-                { maxIn: 4.00, size: "3C", note: "Adjusted down mapping metric. Expect an ideal fit with room to grow." },
-                { maxIn: 4.35, size: "4C", note: "Factored long shoe profile logic parameters into result output value." },
-                { maxIn: 4.65, size: "5C", note: "Toddler Chuck Taylor alignment calculation validation safe." },
-                { maxIn: 5.00, size: "6C", note: "Toddler baseline fit parameters. Canvas compression values safe." },
-                { maxIn: 5.35, size:
+        for (let i = 0; i < chart.length; i++) {
+            if (bufferedCm <= chart[i].max) {
+                finalSize = chart[i].sz;
+                break;
+            }
+        }
+
+        if (finalSize === "N/A") {
+            alert("Out of range: Your child's feet match adult sizing options!");
+            return;
+        }
+
+        document.getElementById('brand-result-text').innerText = `Recommended size for ${brand}:`;
+        document.getElementById('final-size').innerText = finalSize;
+        const textTarget = document.getElementById('affiliate-text');
+        textTarget.innerText = `Shop ${finalSize} ${brand} Shoes`;
+        
+        const affBtn = document.getElementById('affiliate-btn');
+        affBtn.href = `https://www.amazon.com/s?k=kids+${brand}+shoes+size+${finalSize}&tag=kidshoesize-20`; 
+
+        resultBox.style.display = "block";
+        initConfetti();
+    }
+
+    // Canvas Confetti Render Module
+    let currentAnimationId = null;
+    function initConfetti() {
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = canvas.parentElement.offsetWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+
+        if (currentAnimationId) {
+            cancelAnimationFrame(currentAnimationId);
+        }
+
+        let particles = [];
+        const colors = ['#497856', '#a3dab6', '#e6d8bc', '#d5d671', '#d6583c', '#010101'];
+
+        for (let i = 0; i < 220; i++) {
+            particles.push({
+                x: canvas.width / 2,
+                y: canvas.height / 2 + 30,
+                width: Math.random() * 5 + 4,
+                height: Math.random() * 3 + 2.5,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                speedX: (Math.random() - 0.5) * 16,
+                speedY: (Math.random() - 0.78) * 20,
+                rotation: Math.random() * Math.PI * 2,
+                rotationSpeed: (Math.random() - 0.5) * 0.25,
+                gravity: 0.35,
+                opacity: 1
+            });
+        }
+
+        function animate() {
+            if (particles.length === 0) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                return;
+            }
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p, index) => {
+                p.x += p.speedX;
+                p.y += p.speedY;
+                p.speedY += p.gravity;
+                p.rotation += p.rotationSpeed;
+                p.opacity -= 0.012;
+
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate(p.rotation);
+                ctx.fillStyle = p.color;
+                ctx.globalAlpha = Math.max(0, p.opacity);
+                ctx.fillRect(-p.width / 2, -p.height / 2, p.width, p.height);
+                ctx.restore();
+
+                if (p.opacity <= 0 || p.y > canvas.height + 20) {
+                    particles.splice(index, 1);
+                }
+            });
+            ctx.globalAlpha = 1.0;
+            currentAnimationId = requestAnimationFrame(animate);
+        }
+        animate();
+    }
+</script>
+
+</body>
+</html>
